@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.org.employee.domain.Employee" table="employee">
+		<id name="eid" column="eid">
+			<generator class="native"></generator>
+		</id>
+		<property name="ename" column="ename" length="20" />
+		<property name="sex" column="sex" length="20" />
+		<property name="birthday" column="birthday" length="20" />
+		<property name="joinDate" column="joinDate" length="20" />
+		<property name="eno" column="eno" length="20" />
+		<property name="salary" column="salary" length="20" />
+		<property name="username" column="username" length="20" />
+		<property name="password" column="password" length="20" />
+			<!-- 		inverse="true"放弃外键维护权 -->
+		<set name="articles" cascade="delete" inverse="true">
+			<key column="eno"></key>
+			<one-to-many class="com.org.employee.domain.Article"/>
+		</set>
+	
+		<many-to-one name="department" class="com.org.employee.domain.Department" lazy="false" column="dno"></many-to-one>
+	</class>
+</hibernate-mapping>

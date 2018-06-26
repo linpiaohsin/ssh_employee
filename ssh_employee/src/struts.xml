@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="ssh" extends="struts-default" namespace="/">
+		<action name="employee_*" class="employeeAction" method="{1}">
+			<result name="findSal">/showSal.jsp</result>
+			<result name="input">/login.jsp</result>
+			<result name="success" type="redirect">/index.jsp</result>
+			<result name="findAll">listEmployee.jsp</result>
+			<result name="saveUI">addEmployee.jsp</result>
+			<result name="search">searchEmp.jsp</result>
+			<result name="findBlur">searchBlur.jsp</result>
+			<result name="saveSuccess" type="redirectAction">employee_findAll.action</result>
+			<result name="editSuccess">/editEmployee.jsp</result>
+			<result name="updateSuccess" type="redirectAction">employee_findAll.action</result>
+			<result name="deleteSuccess" type="redirectAction">employee_findAll.action</result>
+		</action>
+		<action name="department_*" class="departmentAction" method="{1}">
+			<result name="findAll">/listDep.jsp</result>
+			<result name="saveUI">/addDepartment.jsp</result>
+			<!-- 添加成功就重定向到action -->
+			<result name="saveSuccess" type="redirectAction">department_findAll.action</result>
+			<result name="editSuccess">/editDepartment.jsp</result>
+			<result name="updateSuccess" type="redirectAction">department_findAll.action</result>
+			<result name="deleteSuccess" type="redirectAction">department_findAll.action</result>
+		</action>
+		<action name="article_*" class="articleAction" method="{1}">
+			
+			<result name="findAll">/listArticle.jsp</result>
+			<result name="saveUI">/addArticle.jsp</result>
+			<result name="findDetailSuccess">/articleDetail.jsp</result>
+			<result name="findMine">/myArticle.jsp</result>
+			<result name="editSuccess">/editArticle.jsp</result>
+			<result name="saveSuccess" type="redirectAction">article_findAll.action</result>
+			<result name="updateSuccess" type="redirectAction">article_findAll.action</result>
+			<result name="deleteSuccess" type="redirectAction">article_findAll.action</result>
+		</action>
+		<action name="login_*" class="loginAction" method="{1}">
+			
+			<result name="input">/login.jsp</result>
+			<result name="success" type="redirect">/index.jsp</result>
+		</action>
+	</package>
+	
+</struts>    

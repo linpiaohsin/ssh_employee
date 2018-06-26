@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.org.employee.domain.Department" table="department">
+		<id name="did" column="did">
+			<generator class="native"></generator>
+		</id>
+		<property name="dname" column="dname" length="20"></property>
+		<property name="ddesc" column="ddesc"></property>
+		<!-- 		inverse="true"放弃外键维护权 -->
+		<set name="employees" cascade="delete" inverse="true">
+			<key column="dno"></key>
+			<one-to-many class="com.org.employee.domain.Employee"/>
+		</set>
+	</class>
+</hibernate-mapping>
